@@ -3,46 +3,47 @@ const WebpackPwaManifest = require('webpack-pwa-manifest');
 const path = require('path');
 const { InjectManifest } = require('workbox-webpack-plugin');
 
+// TODO: Add and configure workbox plugins for a service worker and manifest file.
+// TODO: Add CSS loaders and babel to webpack.
+
 module.exports = () => {
   return {
+  // file entry point
     mode: 'development',
     entry: {
       main: './src/js/index.js',
       install: './src/js/install.js'
     },
+    // bundle output
     output: {
       filename: '[name].bundle.js',
       path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
+      //Webpack plugin to generate html file
       new HtmlWebpackPlugin({
-        template: './index.html',
-        title: 'J.A.T.E'
+        template: '/index.html',
+        title: 'Text Editor'
       }),
+      // inject service worker
       new InjectManifest({
         swSrc: './src-sw.js',
         swDest: 'src-sw.js',
       }),
+      // create manifest file
       new WebpackPwaManifest({
         fingerprints: false,
         inject: true,
-        name: 'Just Another Text Editor',
-        short_name: 'J.A.T.E',
-        description: 'Takes notes with JavaScript syntax highlighting!',
-        background_color: '#225ca3',
-        theme_color: '#225ca3',
+        name: 'Text Editor',
+        short_name: 'Text Editor',
+        description: 'In browser text editor that allows user to take notes or code snippets without an internet connection',
+        background_color: '#0a1c31',
+        theme_color: '#0a1c31',
         start_url: '/',
         publicPath: '/',
-        icons: [
-          {
-            src: path.resolve('src/images/logo.png'),
-            sizes: [96, 128, 192, 256, 384, 512],
-            destination: path.join('assets', 'icons'),
-          },
-        ],
       }),
     ],
-
+// load CSS
     module: {
       rules: [
         {
