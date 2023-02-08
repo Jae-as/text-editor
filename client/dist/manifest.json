@@ -1,0 +1,10 @@
+{
+  "name": "Text Editor",
+  "short_name": "Text Editor",
+  "orientation": "portrait",
+  "display": "standalone",
+  "start_url": "/",
+  "description": "In browser text editor that allows user to take notes or code snippets without an internet connection",
+  "background_color": "#0a1c31",
+  "theme_color": "#0a1c31"
+}

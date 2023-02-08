@@ -1,4 +1,4 @@
-import { WebpackOptionsValidationError } from "webpack";
+// import { WebpackOptionsValidationError } from "webpack";
 
 const butInstall = document.getElementById("buttonInstall");
 
